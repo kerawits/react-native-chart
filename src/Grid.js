@@ -11,8 +11,8 @@ export default class Grid extends Component {
 		gridColor: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 		hideHorizontalGridLines: PropTypes.bool,
 		hideVerticalGridLines: PropTypes.bool,
-		height: PropTypes.number.isRequired,
-		width: PropTypes.number.isRequired,
+		height: PropTypes.number,
+		width: PropTypes.number,
 		type: PropTypes.oneOf(['line', 'bar', 'pie']).isRequired,
 	};
 	static defaultProps = {
@@ -38,7 +38,7 @@ export default class Grid extends Component {
 		}
 
 		const horizontalGridStyle = {
-			height: this.props.height / this.props.verticalGridStep,
+			height: (this.props.height - 11)/ this.props.verticalGridStep,
 			width: this.props.width,
 			borderTopColor: this.props.gridColor,
 			borderTopWidth: intendedLineWidth,

@@ -42,7 +42,7 @@ export default class LineChart extends Component<void, any, any> {
 	}
 
 	_drawLine = () => {
-		const containerHeight = this.props.height;
+		const containerHeight = this.props.height - 13;
 		const containerWidth = this.props.width;
 		const data = this.props.data || [];
 		let minBound = this.props.minVerticalBound;
@@ -110,7 +110,7 @@ export default class LineChart extends Component<void, any, any> {
 	render() : any {
 		if (Platform.OS === 'ios') {
 			return (
-				<View style={{ overflow: 'hidden' }}>
+				<View style={{ overflow: 'visible', paddingTop: 13 }}>
 					<Grid {...this.props} />
 					<Animated.View style={{ height: this.state.height, opacity: this.state.opacity, backgroundColor: 'transparent' }}>
 						{this._drawLine()}

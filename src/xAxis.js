@@ -65,6 +65,7 @@ export default class XAxis extends Component {
 									textAlign: this.props.align,
 									color: this.props.axisLabelColor,
 									fontSize: this.props.labelFontSize,
+									fontWeight: this.props.labelFontWeight
 								},
 							]}
 						>{item}</Text>

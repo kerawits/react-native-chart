@@ -55,10 +55,11 @@ export default class YAxis extends Component<void, any, any> {
 				style={{
 					color: this.props.axisLabelColor,
 					fontSize: this.props.labelFontSize,
+					fontWeight: this.props.labelFontWeight
 				}}
 				key={index}
 			>
-				{label}
+				{label.toFixed(2)}
 			</Text>
 		);
 	};

@@ -1,7 +1,7 @@
 /* @flow */
 'use strict';
 import React, { Component, PropTypes } from 'react';
-import { LayoutAnimation, StyleSheet, View } from 'react-native';
+import { LayoutAnimation, StyleSheet, View, Text } from 'react-native';
 import BarChart from './BarChart';
 import LineChart from './LineChart';
 import PieChart from './PieChart';
@@ -45,6 +45,8 @@ export default class Chart extends Component<void, any, any> {
 		labelFontSize: 10,
 		lineWidth: 1,
 		showAxis: true,
+		showXAxis: true,
+		showYAxis: true,
 		showDataPoint: false,
 		showGrid: true,
 		showXAxisLabels: true,
@@ -160,17 +162,23 @@ export default class Chart extends Component<void, any, any> {
 								onLayout={this._onContainerLayout}
 							>
 								<View style={[styles.default, { flexDirection: 'row' }]}>
-									<View ref="yAxis">
-										<YAxis
-											{...this.props}
-											data={this.props.data}
-											height={this.state.containerHeight - this.props.xAxisHeight}
-											width={this.props.yAxisWidth}
-											minVerticalBound={this.state.bounds.min}
-											containerWidth={this.state.containerWidth}
-											maxVerticalBound={this.state.bounds.max}
-											style={{ width: this.props.yAxisWidth }}
-										/>
+									<View ref="yAxis" style={{position: 'absolute', height: this.props.height}}>
+									{(() => {
+										if (this.props.showYAxis) {
+										 	return (
+												<YAxis
+													{...this.props}
+													data={this.props.data}
+													height={this.state.containerHeight - this.props.xAxisHeight}
+													width={this.props.yAxisWidth}
+													minVerticalBound={this.state.bounds.min}
+													containerWidth={this.state.containerWidth}
+													maxVerticalBound={this.state.bounds.max}
+													style={{ width: 50}}
+												/>
+											)
+										}
+									})()}
 									</View>
 									<ChartType
 										{...this.props}
@@ -181,9 +189,10 @@ export default class Chart extends Component<void, any, any> {
 										maxVerticalBound={this.state.bounds.max}
 									/>
 								</View>
+								<View ref="xAxis">
 								{(() => {
-									return (
-										<View ref="xAxis">
+									if (this.props.showXAxis) {
+										return (
 											<XAxis
 												{...this.props}
 												width={this.state.containerWidth - this.props.yAxisWidth}
@@ -192,9 +201,10 @@ export default class Chart extends Component<void, any, any> {
 												align={axisAlign}
 												style={{ marginLeft: this.props.yAxisWidth - 1 }}
 											/>
-										</View>
-									);
+										)
+									}
 								})()}
+								</View>
 							</View>
 						);
 					}
