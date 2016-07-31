@@ -42,7 +42,7 @@ props));_this.
 
 
 _drawLine=function(){
-var containerHeight=_this.props.height-13;
+var containerHeight=_this.props.height-14;
 var containerWidth=_this.props.width;
 var data=_this.props.data||[];
 var minBound=_this.props.minVerticalBound;

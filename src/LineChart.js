@@ -42,7 +42,7 @@ export default class LineChart extends Component<void, any, any> {
 	}
 
 	_drawLine = () => {
-		const containerHeight = this.props.height - 13;
+		const containerHeight = this.props.height - 14;
 		const containerWidth = this.props.width;
 		const data = this.props.data || [];
 		let minBound = this.props.minVerticalBound;
