@@ -19,10 +19,10 @@ var heightZero=_reactNative.Platform.OS==='ios'?0:1;var
 
 LineChart=function(_Component){_inherits(LineChart,_Component);
 
-function LineChart(props){_classCallCheck(this,LineChart);var _this=_possibleConstructorReturn(this,Object.getPrototypeOf(LineChart).call(this,
-props));_this.
+function LineChart(props){_classCallCheck(this,LineChart);
 
-
+// console.log(props);
+var _this=_possibleConstructorReturn(this,Object.getPrototypeOf(LineChart).call(this,props));_this.
 
 
 
@@ -45,6 +45,9 @@ _drawLine=function(){
 var containerHeight=_this.props.height-14;
 var containerWidth=_this.props.width;
 var data=_this.props.data||[];
+
+if(_this.props.data.length<2)return null;
+
 var minBound=_this.props.minVerticalBound;
 var maxBound=_this.props.maxVerticalBound;
 
@@ -105,7 +108,7 @@ dataPoints.map(function(d,i){return _react2.default.createElement(_Circle2.defau
 }()));
 
 
-};console.log(props);var heightValue=props.animated?heightZero:props.height;var opacityValue=props.animated?0:1;_this.state={height:new _reactNative.Animated.Value(heightValue),opacity:new _reactNative.Animated.Value(opacityValue)};return _this;}_createClass(LineChart,[{key:'componentWillUpdate',value:function componentWillUpdate(){if(this.props.animated){_reactNative.Animated.timing(this.state.opacity,{duration:0,toValue:0}).start();_reactNative.Animated.timing(this.state.height,{duration:0,toValue:heightZero}).start();}}},{key:'componentDidUpdate',value:function componentDidUpdate(){if(this.props.animated){_reactNative.Animated.timing(this.state.height,{duration:this.props.animationDuration,toValue:this.props.height}).start();_reactNative.Animated.timing(this.state.opacity,{duration:this.props.animationDuration,toValue:1}).start();}}},{key:'render',value:function render()
+};var heightValue=props.animated?heightZero:props.height;var opacityValue=props.animated?0:1;_this.state={height:new _reactNative.Animated.Value(heightValue),opacity:new _reactNative.Animated.Value(opacityValue)};return _this;}_createClass(LineChart,[{key:'componentWillUpdate',value:function componentWillUpdate(){if(this.props.animated){_reactNative.Animated.timing(this.state.opacity,{duration:0,toValue:0}).start();_reactNative.Animated.timing(this.state.height,{duration:0,toValue:heightZero}).start();}}},{key:'componentDidUpdate',value:function componentDidUpdate(){if(this.props.animated){_reactNative.Animated.timing(this.state.height,{duration:this.props.animationDuration,toValue:this.props.height}).start();_reactNative.Animated.timing(this.state.opacity,{duration:this.props.animationDuration,toValue:1}).start();}}},{key:'render',value:function render()
 
 {
 if(_reactNative.Platform.OS==='ios'){

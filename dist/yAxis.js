@@ -46,7 +46,7 @@ maxBound+=_this.props.verticalGridStep;
 }
 minBound=minBound<0?0:minBound;
 var label=minBound+(maxBound-minBound)/_this.props.verticalGridStep*index;
-label=Math.round(label);
+// label = Math.round(label);
 if(_this.props.yAxisTransform&&typeof _this.props.yAxisTransform==='function'){
 label=_this.props.yAxisTransform(label);
 }

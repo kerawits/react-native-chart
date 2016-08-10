@@ -21,7 +21,7 @@ export default class LineChart extends Component<void, any, any> {
 
 	constructor(props : any) {
 		super(props);
-    console.log(props);
+    // console.log(props);
 		const heightValue = (props.animated) ? heightZero : props.height;
 		const opacityValue = (props.animated) ? 0 : 1;
 		this.state = { height: new Animated.Value(heightValue), opacity: new Animated.Value(opacityValue) };
@@ -45,6 +45,9 @@ export default class LineChart extends Component<void, any, any> {
 		const containerHeight = this.props.height - 14;
 		const containerWidth = this.props.width;
 		const data = this.props.data || [];
+
+		if(this.props.data.length < 2) return null
+
 		let minBound = this.props.minVerticalBound;
 		let maxBound = this.props.maxVerticalBound;
 
